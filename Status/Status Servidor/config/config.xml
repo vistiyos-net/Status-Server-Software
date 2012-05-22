@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><configuration><xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Content"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/><ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<xenc:EncryptedKey xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#kw-tripledes"/><xenc:CipherData><xenc:CipherValue>BciHPnOtyQW4v2XOMxFGDQZ5wHmw9yEM8p0zMWKkUTQ=</xenc:CipherValue></xenc:CipherData></xenc:EncryptedKey></ds:KeyInfo><xenc:CipherData><xenc:CipherValue>c2oZyePPWnfx2G/u7Ll85gS19TjjSHjRr8kzuN4m6KYp2wD0EUNtUW8o+2Sbkiy+9e4v9PjXGa+0
++WYR7H+TuOi+twxRlbOx3f5Bgk+JwZGUv+q/WQKjnzx3wQdWKFtnf2bXe4KQIv+MVpgfRKvbhhuf
+b9r5mOY2XaRbKyHWkyVFNOxXkqhFSbIiphP2RaN2</xenc:CipherValue></xenc:CipherData></xenc:EncryptedData></configuration>
