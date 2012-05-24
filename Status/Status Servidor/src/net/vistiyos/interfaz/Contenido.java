@@ -63,8 +63,8 @@ public class Contenido extends JPanel implements KeyListener,ActionListener, Ite
 	
 	private void init(){
 		contenido = new HashMap<String,JPanel>();
-		displayFont = new Font("Serif", Font.BOLD, 18);
-        titleFont = new Font("Serif", Font.BOLD, 25);
+		displayFont = new Font("TimesRoman", Font.BOLD, 18);
+        titleFont = new Font("TimesRoman", Font.BOLD, 25);
 	}
 	
 	private void initInicio(){

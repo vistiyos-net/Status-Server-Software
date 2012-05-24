@@ -41,11 +41,11 @@ public class Ventana extends JFrame{
 		estilo = new GridBagConstraints();
 		menu = new Sidebar(this);
 		contenido = new Contenido(this);
-		this.setResizable(false);
+		//this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         this.toFront();
-        this.setAlwaysOnTop(true);
+        //this.setAlwaysOnTop(true);
 	}
 	
 	private void initLayout(){

@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import net.vistiyos.config.Configuration;
+import net.vistiyos.util.Log;
 
 public class MySQL {
 	
@@ -27,7 +28,7 @@ public class MySQL {
 				Class.forName("com.mysql.jdbc.Driver");
 				conexion = (Connection) DriverManager.getConnection("jdbc:mysql://"+Configuration.getValue("server")+"/"+Configuration.getValue("database"), Configuration.getValue("user") , Configuration.getValue("password"));
 			} catch (Exception e){
-				e.printStackTrace();
+				Log.addLog(e.getMessage());
 			}
 		}
 	}
@@ -43,7 +44,7 @@ public class MySQL {
 				resultados.add(entry);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return resultados;
 	}
@@ -58,7 +59,7 @@ public class MySQL {
 				resultados+=rows.getString("nombre")+" - "+rows.getFloat("capacidad");
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return resultados;
 	}
@@ -70,7 +71,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			return true;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -95,7 +96,7 @@ public class MySQL {
 				}
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -122,6 +123,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			return true;
 		}catch(SQLException ex){
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -143,7 +145,7 @@ public class MySQL {
 				resultado.add(datos);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return resultado;
 	}
@@ -157,7 +159,7 @@ public class MySQL {
 				columnas.add(metaDatos.getColumnLabel(i + 1)); 
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return columnas;
 	}
@@ -183,8 +185,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			return true;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
-			System.err.println(sql);
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -196,8 +197,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			return true;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
-			System.err.println(sql);
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -219,7 +219,7 @@ public class MySQL {
 				resultado.add(datos);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return resultado;
 	}
@@ -232,8 +232,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			return true;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
-			System.err.println(sql);
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -249,7 +248,7 @@ public class MySQL {
 				datos.add(entry);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -269,7 +268,7 @@ public class MySQL {
 				}
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -296,7 +295,7 @@ public class MySQL {
 			}
 			return true;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -311,7 +310,7 @@ public class MySQL {
 				datos.add(resultado.getString(2));
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -333,7 +332,7 @@ public class MySQL {
 				datos.add(row);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -348,7 +347,7 @@ public class MySQL {
 				datos.add(resultado.getString("nombre_bebida"));
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return datos;
 	}
@@ -369,7 +368,7 @@ public class MySQL {
 			conexion.createStatement().execute(sql);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 	}
 
@@ -382,7 +381,7 @@ public class MySQL {
 				return resultado.getInt("idturno");
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return 0;
 	}
@@ -396,7 +395,7 @@ public class MySQL {
 			sql = "UPDATE turnos set activo = 1 WHERE idturno='"+idTurno+"'";
 			conexion.createStatement().execute(sql);
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 	}
 	
@@ -410,7 +409,7 @@ public class MySQL {
 				resultados.add(entry);
 			}
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}
 		return resultados;
 	}
@@ -421,7 +420,7 @@ public class MySQL {
 			String sql = "UPDATE configuracion SET valor='"+valor+"' WHERE parametro='"+parametro+"'";
 			conexion.createStatement().execute(sql);
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 		}		
 	}
 	
@@ -438,7 +437,7 @@ public class MySQL {
 			}
 			return false;
 		}catch(SQLException ex){
-			System.err.println(ex.getMessage());
+			Log.addLog(ex.getMessage());
 			return false;
 		}
 	}
@@ -456,7 +455,7 @@ public class MySQL {
 			}
 			return hashtext;
 		}catch(NoSuchAlgorithmException ex){
-			System.err.println("No se puede utilizar MD5");
+			Log.addLog("No se puede utilizar MD5");
 			return "";
 		}
 	}
