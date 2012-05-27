@@ -352,17 +352,17 @@ public class MySQL {
 		return datos;
 	}
 
-	public static void insertarEntrada(String nombre, String bebida,float precio,int turno) {
+	public static void insertarEntrada(String nombre, String bebida,float precio,int num_bebidas,int turno) {
 		getConexion();
 		try{
 			String sql = "SELECT * FROM tipo_bebida WHERE nombre_bebida LIKE '"+bebida+"'";
 			ResultSet resultado = conexion.createStatement().executeQuery(sql);
 			if(resultado.next()){
 				if(nombre.startsWith("*")){ //Ya existe
-					sql = "UPDATE asignacion_entradas_turnos SET idbebida = "+resultado.getString("idbebida")+" WHERE nombre LIKE '"+nombre.substring(1)+"' AND idturno="+turno;					
+					sql = "UPDATE asignacion_entradas_turnos SET idbebida = "+resultado.getString("idbebida")+",precio="+precio+",num_bebidas="+num_bebidas+" WHERE nombre LIKE '"+nombre.substring(1)+"' AND idturno="+turno;					
 				}
 				else{ //No existe
-					sql = "INSERT INTO asignacion_entradas_turnos (nombre,idturno,idbebida,precio) VALUES ('"+nombre+"',"+turno+","+resultado.getString("idbebida")+","+precio+")";
+					sql = "INSERT INTO asignacion_entradas_turnos (nombre,idturno,idbebida,precio,num_bebidas) VALUES ('"+nombre+"',"+turno+","+resultado.getString("idbebida")+","+precio+","+num_bebidas+")";
 				}
 			System.out.println(sql);
 			conexion.createStatement().execute(sql);

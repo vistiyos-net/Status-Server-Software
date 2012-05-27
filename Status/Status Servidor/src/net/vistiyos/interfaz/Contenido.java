@@ -615,6 +615,7 @@ public class Contenido extends JPanel implements KeyListener,ActionListener, Ite
         modelo.addColumn("NOMBRE");
         modelo.addColumn("BEBIDA");
         modelo.addColumn("PRECIO");
+        modelo.addColumn("NÚMERO DE BEBIDAS");
         JTable tabla = new JTable();
         ArrayList<String> datosBebidas = MySQL.getBebidas();
         JComboBox<String> listaBebidas = new JComboBox<String>();
@@ -1072,9 +1073,11 @@ public class Contenido extends JPanel implements KeyListener,ActionListener, Ite
 						String nombre = String.valueOf(data.get(j).get(0));
 						String bebida = String.valueOf(data.get(j).get(1));
 						float precio =  Float.parseFloat(String.valueOf(data.get(j).get(2)).replace(",", "."));
-						MySQL.insertarEntrada(nombre,bebida,precio,idturno);
+						int num_bebidas = Integer.parseInt(String.valueOf(data.get(j).get(3)));
+						MySQL.insertarEntrada(nombre,bebida,precio,num_bebidas,idturno);
 					}
 					fin = true;
+					//Enviar email con la recaudación si hay recaudación.
 					new VentanaInfo(this.padre,"Precios Actualizados", VentanaInfo.INFO);
 				}
 			}	
@@ -1143,6 +1146,7 @@ public class Contenido extends JPanel implements KeyListener,ActionListener, Ite
 						array.add("*"+mapa.get("nombre"));
 						array.add(mapa.get("nombre_bebida"));
 						array.add(mapa.get("precio"));
+						array.add(mapa.get("num_bebidas"));
 						modelo.addRow(array.toArray());
 					}
 					modelo.addEmptyRow();
